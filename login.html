@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Login & Daftar Anggota</title>
+<title>Login & Register Anggota</title>
 
 <style>
 body{
@@ -32,7 +32,7 @@ button{
     border:none;
     border-radius:5px;
     cursor:pointer;
-    margin-top:10px;
+    margin:8px;
 }
 
 table{
@@ -58,27 +58,35 @@ th, td{
 
 <body>
 
+<!-- ================= LOGIN ================= -->
+
 <h2>Login Admin</h2>
 
 <input type="text" placeholder="Username" id="username"><br>
 <input type="password" placeholder="Password" id="password"><br>
 <button onclick="login()">Login</button>
 
+<hr style="margin:40px 0;">
+
+<!-- ================= REGISTER ================= -->
+
+<h2>Register Anggota Perpustakaan</h2>
+
+<input type="text" id="nama" placeholder="Nama Lengkap"><br>
+<input type="text" id="nim" placeholder="NIM"><br>
+<input type="text" id="prodi" placeholder="Program Studi"><br>
+<input type="text" id="hp" placeholder="No HP"><br>
+
+<select id="status">
+    <option value="Aktif">Aktif</option>
+    <option value="Nonaktif">Nonaktif</option>
+</select><br>
+
+<button onclick="register()">Daftar Sekarang</button>
+
+<!-- ================= TABEL (HANYA ADMIN) ================= -->
+
 <div id="areaAdmin" style="display:none;">
-
-    <h2>Form Daftar Anggota Baru</h2>
-
-    <input type="text" id="nama" placeholder="Nama Lengkap"><br>
-    <input type="text" id="nim" placeholder="NIM"><br>
-    <input type="text" id="prodi" placeholder="Program Studi"><br>
-    <input type="text" id="hp" placeholder="No HP"><br>
-
-    <select id="status">
-        <option value="Aktif">Aktif</option>
-        <option value="Nonaktif">Nonaktif</option>
-    </select><br>
-
-    <button onclick="tambahAnggota()">Daftar Anggota</button>
 
     <h2>Daftar Anggota Perpustakaan</h2>
 
@@ -97,21 +105,10 @@ th, td{
 
 <script>
 
-function login(){
-    let user = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
-
-    if(user === "admin" && pass === "12345"){
-        document.getElementById("areaAdmin").style.display = "block";
-        alert("Login Berhasil!");
-    } else {
-        alert("Username atau Password salah!");
-    }
-}
-
+let anggota = [];
 let nomor = 1;
 
-function tambahAnggota(){
+function register(){
 
     let nama = document.getElementById("nama").value;
     let nim = document.getElementById("nim").value;
@@ -124,21 +121,47 @@ function tambahAnggota(){
         return;
     }
 
-    let tabel = document.getElementById("tabelAnggota");
-    let row = tabel.insertRow();
+    anggota.push({nama, nim, prodi, hp, status});
 
-    row.insertCell(0).innerHTML = nomor++;
-    row.insertCell(1).innerHTML = nama;
-    row.insertCell(2).innerHTML = nim;
-    row.insertCell(3).innerHTML = prodi;
-    row.insertCell(4).innerHTML = hp;
-    row.insertCell(5).innerHTML = status;
+    alert("Registrasi berhasil! Silakan tunggu verifikasi admin.");
 
     document.getElementById("nama").value = "";
     document.getElementById("nim").value = "";
     document.getElementById("prodi").value = "";
     document.getElementById("hp").value = "";
+}
 
+function login(){
+
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "admin" && pass === "12345"){
+        document.getElementById("areaAdmin").style.display = "block";
+        tampilkanData();
+        alert("Login Admin Berhasil!");
+    } else {
+        alert("Username atau Password salah!");
+    }
+}
+
+function tampilkanData(){
+
+    let tabel = document.getElementById("tabelAnggota");
+
+    for(let i = 0; i < anggota.length; i++){
+
+        let row = tabel.insertRow();
+
+        row.insertCell(0).innerHTML = nomor++;
+        row.insertCell(1).innerHTML = anggota[i].nama;
+        row.insertCell(2).innerHTML = anggota[i].nim;
+        row.insertCell(3).innerHTML = anggota[i].prodi;
+        row.insertCell(4).innerHTML = anggota[i].hp;
+        row.insertCell(5).innerHTML = anggota[i].status;
+    }
+
+    anggota = [];
 }
 
 </script>
