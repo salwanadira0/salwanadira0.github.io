@@ -2,25 +2,29 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Login & Register Anggota</title>
+<title>Login Anggota</title>
 
 <style>
 body{
     font-family:Georgia, serif;
     background:#fdfaf6;
     text-align:center;
-    padding:40px;
+    padding:60px;
 }
 
-h2{
-    color:#5c4b3b;
-    margin-bottom:20px;
+.box{
+    background:white;
+    padding:30px;
+    width:350px;
+    margin:auto;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-input, select{
+input{
     padding:10px;
     margin:8px;
-    width:260px;
+    width:90%;
     border:1px solid #ccc;
     border-radius:5px;
 }
@@ -32,138 +36,43 @@ button{
     border:none;
     border-radius:5px;
     cursor:pointer;
-    margin:8px;
 }
 
-table{
-    margin:40px auto;
-    border-collapse:collapse;
-    width:90%;
-    background:white;
-}
-
-table, th, td{
-    border:1px solid #ccc;
-}
-
-th{
-    background:#f6efe6;
-}
-
-th, td{
-    padding:10px;
+a{
+    display:block;
+    margin-top:15px;
+    color:#5c4b3b;
+    text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+<div class="box">
+    <h2>Login Anggota Perpustakaan</h2>
 
-<h2>Login Admin</h2>
+    <input type="text" id="namaLogin" placeholder="Masukkan Nama"><br>
+    <input type="text" id="nimLogin" placeholder="Masukkan NIM"><br>
 
-<input type="text" placeholder="Username" id="username"><br>
-<input type="password" placeholder="Password" id="password"><br>
-<button onclick="login()">Login</button>
+    <button onclick="login()">Login</button>
 
-<hr style="margin:40px 0;">
-
-<!-- ================= REGISTER ================= -->
-
-<h2>Register Anggota Perpustakaan</h2>
-
-<input type="text" id="nama" placeholder="Nama Lengkap"><br>
-<input type="text" id="nim" placeholder="NIM"><br>
-<input type="text" id="prodi" placeholder="Program Studi"><br>
-<input type="text" id="hp" placeholder="No HP"><br>
-
-<select id="status">
-    <option value="Aktif">Aktif</option>
-    <option value="Nonaktif">Nonaktif</option>
-</select><br>
-
-<button onclick="register()">Daftar Sekarang</button>
-
-<!-- ================= TABEL (HANYA ADMIN) ================= -->
-
-<div id="areaAdmin" style="display:none;">
-
-    <h2>Daftar Anggota Perpustakaan</h2>
-
-    <table id="tabelAnggota">
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>NIM</th>
-            <th>Program Studi</th>
-            <th>No HP</th>
-            <th>Status</th>
-        </tr>
-    </table>
-
+    <a href="register.html" target="_blank">
+        Belum punya akun? <b>Daftar Anggota Baru</b>
+    </a>
 </div>
 
 <script>
-
-let anggota = [];
-let nomor = 1;
-
-function register(){
-
-    let nama = document.getElementById("nama").value;
-    let nim = document.getElementById("nim").value;
-    let prodi = document.getElementById("prodi").value;
-    let hp = document.getElementById("hp").value;
-    let status = document.getElementById("status").value;
-
-    if(nama === "" || nim === "" || prodi === "" || hp === ""){
-        alert("Isi semua data terlebih dahulu!");
-        return;
-    }
-
-    anggota.push({nama, nim, prodi, hp, status});
-
-    alert("Registrasi berhasil! Silakan tunggu verifikasi admin.");
-
-    document.getElementById("nama").value = "";
-    document.getElementById("nim").value = "";
-    document.getElementById("prodi").value = "";
-    document.getElementById("hp").value = "";
-}
-
 function login(){
+    let nama = document.getElementById("namaLogin").value;
+    let nim = document.getElementById("nimLogin").value;
 
-    let user = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
-
-    if(user === "admin" && pass === "12345"){
-        document.getElementById("areaAdmin").style.display = "block";
-        tampilkanData();
-        alert("Login Admin Berhasil!");
+    if(nama === "" || nim === ""){
+        alert("Isi Nama dan NIM terlebih dahulu!");
     } else {
-        alert("Username atau Password salah!");
+        alert("Login berhasil! Selamat datang " + nama);
     }
 }
-
-function tampilkanData(){
-
-    let tabel = document.getElementById("tabelAnggota");
-
-    for(let i = 0; i < anggota.length; i++){
-
-        let row = tabel.insertRow();
-
-        row.insertCell(0).innerHTML = nomor++;
-        row.insertCell(1).innerHTML = anggota[i].nama;
-        row.insertCell(2).innerHTML = anggota[i].nim;
-        row.insertCell(3).innerHTML = anggota[i].prodi;
-        row.insertCell(4).innerHTML = anggota[i].hp;
-        row.insertCell(5).innerHTML = anggota[i].status;
-    }
-
-    anggota = [];
-}
-
 </script>
 
 </body>
