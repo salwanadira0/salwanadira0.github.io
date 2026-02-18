@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style>
+body{
+    font-family:Georgia, serif;
+    background:#fdfaf6;
+    text-align:center;
+    padding:40px;
+}
+input{
+    padding:10px;
+    margin:10px;
+    width:250px;
+}
+button{
+    padding:10px 20px;
+    background:#5c4b3b;
+    color:white;
+    border:none;
+}
+table{
+    margin:40px auto;
+    border-collapse:collapse;
+    width:80%;
+}
+table, th, td{
+    border:1px solid #ccc;
+}
+th, td{
+    padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Login Anggota</h2>
+
+<input type="text" placeholder="Username"><br>
+<input type="password" placeholder="Password"><br>
+<button onclick="showTable()">Login</button>
+
+<div id="anggota" style="display:none;">
+    <h2>Daftar Anggota</h2>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Salwa Nadira</td>
+            <td>202401001</td>
+            <td>Aktif</td>
+        </tr>
+    </table>
+</div>
+
+<script>
+function showTable(){
+    document.getElementById("anggota").style.display = "block";
+}
+</script>
+
+</body>
+</html>
