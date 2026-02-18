@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Login & Daftar Anggota</title>
+
 <style>
 body{
     font-family:Georgia, serif;
@@ -10,25 +11,45 @@ body{
     text-align:center;
     padding:40px;
 }
-input{
-    padding:10px;
-    margin:10px;
-    width:250px;
+
+h2{
+    color:#5c4b3b;
+    margin-bottom:20px;
 }
+
+input, select{
+    padding:10px;
+    margin:8px;
+    width:260px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
 button{
     padding:10px 20px;
     background:#5c4b3b;
     color:white;
     border:none;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
 }
+
 table{
     margin:40px auto;
     border-collapse:collapse;
-    width:80%;
+    width:90%;
+    background:white;
 }
+
 table, th, td{
     border:1px solid #ccc;
 }
+
+th{
+    background:#f6efe6;
+}
+
 th, td{
     padding:10px;
 }
@@ -37,34 +58,89 @@ th, td{
 
 <body>
 
-<h2>Login Anggota</h2>
+<h2>Login Admin</h2>
 
-<input type="text" placeholder="Username"><br>
-<input type="password" placeholder="Password"><br>
-<button onclick="showTable()">Login</button>
+<input type="text" placeholder="Username" id="username"><br>
+<input type="password" placeholder="Password" id="password"><br>
+<button onclick="login()">Login</button>
 
-<div id="anggota" style="display:none;">
-    <h2>Daftar Anggota</h2>
-    <table>
+<div id="areaAdmin" style="display:none;">
+
+    <h2>Form Daftar Anggota Baru</h2>
+
+    <input type="text" id="nama" placeholder="Nama Lengkap"><br>
+    <input type="text" id="nim" placeholder="NIM"><br>
+    <input type="text" id="prodi" placeholder="Program Studi"><br>
+    <input type="text" id="hp" placeholder="No HP"><br>
+
+    <select id="status">
+        <option value="Aktif">Aktif</option>
+        <option value="Nonaktif">Nonaktif</option>
+    </select><br>
+
+    <button onclick="tambahAnggota()">Daftar Anggota</button>
+
+    <h2>Daftar Anggota Perpustakaan</h2>
+
+    <table id="tabelAnggota">
         <tr>
             <th>No</th>
             <th>Nama</th>
             <th>NIM</th>
+            <th>Program Studi</th>
+            <th>No HP</th>
             <th>Status</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Salwa Nadira</td>
-            <td>202401001</td>
-            <td>Aktif</td>
-        </tr>
     </table>
+
 </div>
 
 <script>
-function showTable(){
-    document.getElementById("anggota").style.display = "block";
+
+function login(){
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "admin" && pass === "12345"){
+        document.getElementById("areaAdmin").style.display = "block";
+        alert("Login Berhasil!");
+    } else {
+        alert("Username atau Password salah!");
+    }
 }
+
+let nomor = 1;
+
+function tambahAnggota(){
+
+    let nama = document.getElementById("nama").value;
+    let nim = document.getElementById("nim").value;
+    let prodi = document.getElementById("prodi").value;
+    let hp = document.getElementById("hp").value;
+    let status = document.getElementById("status").value;
+
+    if(nama === "" || nim === "" || prodi === "" || hp === ""){
+        alert("Isi semua data terlebih dahulu!");
+        return;
+    }
+
+    let tabel = document.getElementById("tabelAnggota");
+    let row = tabel.insertRow();
+
+    row.insertCell(0).innerHTML = nomor++;
+    row.insertCell(1).innerHTML = nama;
+    row.insertCell(2).innerHTML = nim;
+    row.insertCell(3).innerHTML = prodi;
+    row.insertCell(4).innerHTML = hp;
+    row.insertCell(5).innerHTML = status;
+
+    document.getElementById("nama").value = "";
+    document.getElementById("nim").value = "";
+    document.getElementById("prodi").value = "";
+    document.getElementById("hp").value = "";
+
+}
+
 </script>
 
 </body>
