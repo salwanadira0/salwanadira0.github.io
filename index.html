@@ -39,10 +39,19 @@ header.scrolled{
     padding:14px 80px;
 }
 
-header h1{
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
     color:#5c4b3b;
     font-size:20px;
     letter-spacing:1px;
+}
+
+.logo-kecil{
+    width:28px;
+    height:28px;
+    object-fit:contain;
 }
 
 nav a{
@@ -119,10 +128,11 @@ nav a:hover{
 }
 
 #profil img{
-    width:180px;
-    height:180px;
+    width:200px;
+    height:200px;
     border-radius:50%;
     object-fit:cover;
+    object-position:top;
     box-shadow:0 8px 20px rgba(0,0,0,0.1);
     margin-bottom:25px;
 }
@@ -149,37 +159,41 @@ nav a:hover{
     margin-bottom:30px;
 }
 
-/* KONTAK */
-#kontak{
-    padding:80px 20px;
-    background:#f6efe6;
-    text-align:center;
+/* INFO PERPUSTAKAAN */
+.info-perpus{
+    background:#ede3d8;
+    padding:50px 20px;
+    border-top:3px solid #c8b6a6;
 }
 
-#kontak h2{
-    font-size:28px;
+.info-container{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.info-box{
+    flex:1;
+    min-width:250px;
+}
+
+.info-box h3{
+    margin-bottom:15px;
+    font-size:18px;
     color:#5c4b3b;
-    margin-bottom:20px;
+    border-bottom:2px solid #c8b6a6;
+    padding-bottom:8px;
 }
 
-#kontak input, #kontak textarea{
-    width:100%;
-    padding:10px;
-    margin-bottom:10px;
-    border:1px solid #ccc;
-    border-radius:5px;
+.info-box p{
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:8px;
 }
 
-#kontak button{
-    padding:10px 20px;
-    background:#5c4b3b;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-/* FOOTER */
 footer{
     background:#f6efe6;
     color:#5c4b3b;
@@ -197,18 +211,20 @@ html{
 <body>
 
 <header id="navbar">
-    <h1>Perpustakaan Digital | Salwa Nadira</h1>
+    <h1 class="brand">
+        <img src="logo.png" alt="Logo" class="logo-kecil">
+        Perpustakaan Digital | Salwa Nadira
+    </h1>
     <nav>
-        <a href="#home">Beranda</a>
+        <a href="index.html">Beranda</a>
         <a href="#">Koleksi</a>
         <a href="#">Layanan</a>
-        <a href="#kontak">Kontak</a>
-        <a href="login.html">Login</a>
+        <a href="kontak.html" target="_blank">Kontak</a>
+        <a href="login.html" target="_blank">Login</a>
     </nav>
 </header>
 
-<section class="hero" id="home">
-
+<section class="hero">
     <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');"></div>
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba');"></div>
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217');"></div>
@@ -221,34 +237,52 @@ html{
             dalam satu ruang belajar yang terstruktur dan nyaman.
         </p>
     </div>
-
 </section>
 
 <section id="profil">
     <h2>Tentang Salwa Nadira</h2>
-    <img src="https://via.placeholder.com/150" alt="Foto">
+    <img src="salwa.jpg" alt="Foto Salwa Nadira">
     <h3>Salwa Nadira</h3>
     <p><strong>Mahasiswa | Pencinta Buku | Pengembang Perpustakaan Digital</strong></p>
+    <p>
+        Saya membangun Perpustakaan Digital ini sebagai ruang belajar interaktif dan mudah diakses.
+    </p>
 </section>
 
 <section id="video">
     <h2>Video Inspiratif</h2>
-    <a href="https://youtu.be/SRsHtd913K4?si=ViLPJ8OlNXANIf3b" target="_blank">Tonton di YouTube</a>
+    <div style="max-width:800px; margin:auto;">
+        <iframe width="100%" height="450" 
+        src="https://www.youtube.com/embed/SRsHtd913K4" 
+        frameborder="0" allowfullscreen></iframe>
+    </div>
 </section>
 
-<section id="kontak">
-    <h2>Hubungi Kami</h2>
-    <p>Email: salwanadira@email.com</p>
-    <p>Instagram: @salwanadiira</p>
+<section class="info-perpus">
+    <div class="info-container">
+        
+        <div class="info-box">
+            <h3>Jam Operasional</h3>
+            <p>Senin - Jumat : 08.00 - 16.00</p>
+            <p>Sabtu : 09.00 - 14.00</p>
+            <p>Minggu & Hari Libur : Tutup</p>
+        </div>
 
-    <br>
+        <div class="info-box">
+            <h3>Alamat</h3>
+            <p>Jl. Pendidikan No. 10</p>
+            <p>Medan, Sumatera Utara</p>
+            <p>Indonesia</p>
+        </div>
 
-    <form style="max-width:400px; margin:auto;">
-        <input type="text" placeholder="Nama Anda" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Pesan..." required></textarea>
-        <button type="submit">Kirim Pesan</button>
-    </form>
+        <div class="info-box">
+            <h3>Kontak</h3>
+            <p>Email: perpustakaan@email.com</p>
+            <p>Telp: (061) 1234567</p>
+            <p>Instagram: @perpusdigital</p>
+        </div>
+
+    </div>
 </section>
 
 <footer>
