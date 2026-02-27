@@ -10,11 +10,11 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Georgia', serif;
+    font-family:'Georgia', serif;
 }
 
 body{
-    background-color:#fdfaf6;
+    background:#fdfaf6;
     color:#4a4b4a;
 }
 
@@ -24,19 +24,13 @@ header{
     width:100%;
     top:0;
     left:0;
-    background:rgba(255, 248, 240, 0.95);
+    background:rgba(255,248,240,0.95);
     padding:18px 80px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    transition:0.3s;
     z-index:1000;
     box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
-
-header.scrolled{
-    background:#f6efe6;
-    padding:14px 80px;
 }
 
 .brand{
@@ -45,26 +39,32 @@ header.scrolled{
     gap:10px;
     color:#5c4b3b;
     font-size:20px;
-    letter-spacing:1px;
 }
 
 .logo-kecil{
     width:28px;
-    height:28px;
-    object-fit:contain;
+}
+
+nav{
+    display:flex;
 }
 
 nav a{
     color:#5c4b3b;
     text-decoration:none;
-    margin-left:28px;
+    margin-left:25px;
     font-size:14px;
-    letter-spacing:1px;
-    transition:0.3s;
 }
 
 nav a:hover{
     color:#a1887f;
+}
+
+/* BURGER */
+.burger{
+    display:none;
+    font-size:24px;
+    cursor:pointer;
 }
 
 /* HERO */
@@ -85,7 +85,7 @@ nav a:hover{
     background-size:cover;
     background-position:center;
     opacity:0;
-    transition:opacity 2s ease-in-out;
+    transition:opacity 2s;
 }
 
 .slide.active{
@@ -94,45 +94,71 @@ nav a:hover{
 
 .hero-text{
     position:relative;
-    background:rgba(255,255,255,0.88);
+    background:rgba(255,255,255,0.9);
     padding:60px;
     border-radius:10px;
     max-width:650px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
     z-index:2;
 }
 
-.hero-text h2{
-    font-size:38px;
-    margin-bottom:15px;
-    font-weight:normal;
+/* SEARCH */
+.search-box{
+    margin-top:25px;
+}
+
+.search-box input{
+    padding:12px;
+    width:60%;
+    max-width:400px;
+    border:1px solid #d7ccc8;
+    border-radius:6px;
+}
+
+.search-box button{
+    padding:12px 18px;
+    background:#e8dcd1;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* ABOUT PERGURUAN TINGGI */
+#about{
+    padding:100px 20px;
+    text-align:center;
+    background:#fff;
+}
+
+#about h2{
+    margin-bottom:20px;
     color:#5c4b3b;
 }
 
-.hero-text p{
-    font-size:17px;
+#about p{
+    max-width:750px;
+    margin:auto;
     line-height:1.7;
 }
 
 /* VIDEO */
 #video{
-    padding:100px 20px;
-    background:#fff;
+    padding:80px 20px;
+    background:#fdfaf6;
     text-align:center;
 }
 
-#video h2{
-    font-size:28px;
-    color:#5c4b3b;
-    margin-bottom:30px;
+#video iframe{
+    width:100%;
+    max-width:650px;
+    height:350px;
+    border-radius:10px;
 }
 
 /* FOOTER */
 footer{
-    background:#f6efe6;
-    color:#5c4b3b;
+    background:#5c4b3b;
+    color:white;
     padding:50px 20px 20px;
-    border-top:2px solid #d7ccc8;
 }
 
 .footer-content{
@@ -143,13 +169,12 @@ footer{
 }
 
 .footer-section{
-    max-width:300px;
+    max-width:250px;
     margin:15px;
 }
 
 .footer-section h3{
     margin-bottom:15px;
-    font-size:16px;
 }
 
 .footer-section p{
@@ -159,98 +184,139 @@ footer{
 
 .footer-bottom{
     text-align:center;
+    border-top:1px solid rgba(255,255,255,0.3);
     padding-top:15px;
-    border-top:1px solid #d7ccc8;
     font-size:13px;
 }
 
-html{
-    scroll-behavior:smooth;
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    header{
+        padding:18px 20px;
+    }
+
+    nav{
+        position:absolute;
+        top:70px;
+        right:0;
+        background:#f6efe6;
+        width:200px;
+        flex-direction:column;
+        display:none;
+        padding:20px;
+    }
+
+    nav a{
+        margin:10px 0;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .burger{
+        display:block;
+    }
+
+    .search-box input{
+        width:80%;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header id="navbar">
-    <h1 class="brand">
-        <img src="logo.png" alt="Logo" class="logo-kecil">
+<header>
+    <div class="brand">
+        <img src="logo.png" class="logo-kecil">
         SANADI Library
-    </h1>
-    <nav>
+    </div>
+
+    <div class="burger" onclick="toggleMenu()">☰</div>
+
+    <nav id="navMenu">
         <a href="index.html">Beranda</a>
         <a href="#">Koleksi</a>
         <a href="#">Layanan</a>
-        <a href="kontak.html" target="_blank">Kontak</a>
+        <a href="kontak.html">Kontak</a>
         <a href="admin.html">Admin</a>
-        <a href="login.html" target="_blank">Login</a>
+        <a href="login.html">Login</a>
     </nav>
 </header>
 
 <section class="hero">
     <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');"></div>
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba');"></div>
-    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217');"></div>
-    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570');"></div>
 
     <div class="hero-text">
-        <h2>Selamat Datang</h2>
+        <h2>Perpustakaan Perguruan Tinggi Digital</h2>
         <p>
-            Perpustakaan Digital yang menyediakan akses bacaan dan referensi
-            dalam satu ruang belajar yang terstruktur dan nyaman.
+            Mendukung kegiatan akademik melalui akses literatur ilmiah,
+            referensi terpercaya, dan sumber belajar berbasis teknologi.
         </p>
+
+        <div class="search-box">
+            <input type="text" placeholder="Cari judul buku, penulis, atau kata kunci...">
+            <button>🔍 Cari</button>
+        </div>
     </div>
+</section>
+
+<section id="about">
+    <h2>Tentang Perpustakaan Perguruan Tinggi</h2>
+    <p>
+        SANADI Library merupakan perpustakaan perguruan tinggi berbasis digital 
+        yang berfungsi sebagai pusat sumber informasi akademik. Perpustakaan ini 
+        mendukung proses pendidikan, penelitian, dan pengabdian kepada masyarakat 
+        dengan menyediakan koleksi ilmiah yang terstruktur, relevan, dan mudah diakses.
+    </p>
 </section>
 
 <section id="video">
     <h2>Video Inspiratif</h2>
-    <div style="max-width:800px; margin:auto;">
-        <iframe width="100%" height="450" 
-        src="https://www.youtube.com/embed/SRsHtd913K4" 
-        frameborder="0" allowfullscreen></iframe>
-    </div>
+    <iframe src="https://www.youtube.com/embed/SRsHtd913K4" allowfullscreen></iframe>
 </section>
 
 <footer>
     <div class="footer-content">
         <div class="footer-section">
-            <h3>SANADI Library</h3>
-            <p>Perpustakaan Digital modern untuk generasi pembelajar.</p>
+            <h3>📚 SANADI Library</h3>
+            <p>Pusat literasi digital perguruan tinggi.</p>
         </div>
 
         <div class="footer-section">
-            <h3>Jam Operasional</h3>
+            <h3>⏰ Jam Operasional</h3>
             <p>Senin - Jumat : 08.00 - 16.00</p>
             <p>Sabtu : 09.00 - 14.00</p>
-            <p>Minggu & Hari Libur : Tutup</p>
         </div>
 
         <div class="footer-section">
-            <h3>Kontak</h3>
+            <h3>📞 Kontak</h3>
             <p>Email: info@sanadilibrary.com</p>
             <p>Instagram: @salwanadiira</p>
         </div>
     </div>
 
     <div class="footer-bottom">
-        &copy; 2026 SANADI Library | Pengetahuan Digital untuk Generasi Masa Depan
+        © 2026 SANADI Library | Perpustakaan Perguruan Tinggi Digital
     </div>
 </footer>
 
 <script>
+function toggleMenu(){
+    document.getElementById("navMenu").classList.toggle("active");
+}
+
 const slides = document.querySelectorAll('.slide');
 let index = 0;
 
-setInterval(() => {
+setInterval(()=>{
     slides[index].classList.remove('active');
-    index = (index + 1) % slides.length;
+    index = (index+1)%slides.length;
     slides[index].classList.add('active');
-}, 6000);
-
-window.addEventListener("scroll", function(){
-    let header = document.getElementById("navbar");
-    header.classList.toggle("scrolled", window.scrollY > 50);
-});
+},6000);
 </script>
 
 </body>
