@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perpustakaan Digital</title>
+<title>Perpustakaan Digital | SANADI Library</title>
 
 <style>
 *{
@@ -114,41 +114,9 @@ nav a:hover{
     line-height:1.7;
 }
 
-/* PROFIL */
-#profil{
-    padding:120px 20px;
-    background:#f6efe6;
-    text-align:center;
-}
-
-#profil h2{
-    font-size:30px;
-    color:#5c4b3b;
-    margin-bottom:40px;
-}
-
-#profil img{
-    width:200px;
-    height:200px;
-    border-radius:50%;
-    object-fit:cover;
-    object-position:top;
-    box-shadow:0 8px 20px rgba(0,0,0,0.1);
-    margin-bottom:25px;
-}
-
-#profil h3{
-    margin-bottom:10px;
-}
-
-#profil p{
-    line-height:1.6;
-    margin-bottom:15px;
-}
-
 /* VIDEO */
 #video{
-    padding:80px 20px;
+    padding:100px 20px;
     background:#fff;
     text-align:center;
 }
@@ -159,47 +127,41 @@ nav a:hover{
     margin-bottom:30px;
 }
 
-/* INFO PERPUSTAKAAN */
-.info-perpus{
-    background:#ede3d8;
-    padding:50px 20px;
-    border-top:3px solid #c8b6a6;
-}
-
-.info-container{
-    max-width:1000px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:30px;
-}
-
-.info-box{
-    flex:1;
-    min-width:250px;
-}
-
-.info-box h3{
-    margin-bottom:15px;
-    font-size:18px;
-    color:#5c4b3b;
-    border-bottom:2px solid #c8b6a6;
-    padding-bottom:8px;
-}
-
-.info-box p{
-    font-size:14px;
-    line-height:1.6;
-    margin-bottom:8px;
-}
-
+/* FOOTER */
 footer{
     background:#f6efe6;
     color:#5c4b3b;
-    text-align:center;
-    padding:25px;
+    padding:50px 20px 20px;
+    border-top:2px solid #d7ccc8;
+}
+
+.footer-content{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.footer-section{
+    max-width:300px;
+    margin:15px;
+}
+
+.footer-section h3{
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+.footer-section p{
     font-size:14px;
+    margin-bottom:8px;
+}
+
+.footer-bottom{
+    text-align:center;
+    padding-top:15px;
+    border-top:1px solid #d7ccc8;
+    font-size:13px;
 }
 
 html{
@@ -213,13 +175,14 @@ html{
 <header id="navbar">
     <h1 class="brand">
         <img src="logo.png" alt="Logo" class="logo-kecil">
-        Perpustakaan Digital | Salwa Nadira
+        SANADI Library
     </h1>
     <nav>
         <a href="index.html">Beranda</a>
         <a href="#">Koleksi</a>
         <a href="#">Layanan</a>
         <a href="kontak.html" target="_blank">Kontak</a>
+        <a href="admin.html">Admin</a>
         <a href="login.html" target="_blank">Login</a>
     </nav>
 </header>
@@ -239,16 +202,6 @@ html{
     </div>
 </section>
 
-<section id="profil">
-    <h2>Tentang Salwa Nadira</h2>
-    <img src="salwa.jpg" alt="Foto Salwa Nadira">
-    <h3>Salwa Nadira</h3>
-    <p><strong>Mahasiswa | Pencinta Buku | Pengembang Perpustakaan Digital</strong></p>
-    <p>
-        Saya membangun Perpustakaan Digital ini sebagai ruang belajar interaktif dan mudah diakses.
-    </p>
-</section>
-
 <section id="video">
     <h2>Video Inspiratif</h2>
     <div style="max-width:800px; margin:auto;">
@@ -258,35 +211,30 @@ html{
     </div>
 </section>
 
-<section class="info-perpus">
-    <div class="info-container">
-        
-        <div class="info-box">
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>SANADI Library</h3>
+            <p>Perpustakaan Digital modern untuk generasi pembelajar.</p>
+        </div>
+
+        <div class="footer-section">
             <h3>Jam Operasional</h3>
             <p>Senin - Jumat : 08.00 - 16.00</p>
             <p>Sabtu : 09.00 - 14.00</p>
             <p>Minggu & Hari Libur : Tutup</p>
         </div>
 
-        <div class="info-box">
-            <h3>Alamat</h3>
-            <p>Jl. Pendidikan No. 10</p>
-            <p>Medan, Sumatera Utara</p>
-            <p>Indonesia</p>
-        </div>
-
-        <div class="info-box">
+        <div class="footer-section">
             <h3>Kontak</h3>
-            <p>Email: perpustakaan@email.com</p>
-            <p>Telp: (061) 1234567</p>
-            <p>Instagram: @perpusdigital</p>
+            <p>Email: info@sanadilibrary.com</p>
+            <p>Instagram: @salwanadiira</p>
         </div>
-
     </div>
-</section>
 
-<footer>
-    &copy; 2026 Perpustakaan Digital | Pengetahuan Digital untuk Generasi Masa Depan
+    <div class="footer-bottom">
+        &copy; 2026 SANADI Library | Pengetahuan Digital untuk Generasi Masa Depan
+    </div>
 </footer>
 
 <script>
