@@ -3,102 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perpustakaan Digital</title>
+<title>Sanadi Library</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Segoe UI', sans-serif;
 }
 
 body{
     background:#f8f5f2;
+    color:#333;
 }
 
-/* ================= NAVBAR ================= */
+/* NAVBAR */
 nav{
     background:#5c4b3b;
-    padding:15px 40px;
+    padding:18px 50px;
     color:white;
     display:flex;
     justify-content:space-between;
 }
 
 nav h1{
-    font-size:20px;
+    font-size:22px;
+    letter-spacing:1px;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
-    height:60vh;
+    height:65vh;
     background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') center/cover;
     display:flex;
     justify-content:center;
     align-items:center;
-    color:white;
     text-align:center;
 }
 
 .hero-text{
-    background:rgba(0,0,0,0.5);
-    padding:30px;
-    border-radius:10px;
+    background:rgba(0,0,0,0.55);
+    padding:40px;
+    border-radius:15px;
+    color:white;
 }
 
-/* ================= SEARCH ================= */
+.hero-text h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+/* SEARCH CLEAN */
 #search{
     padding:70px 20px;
-    text-align:center;
     background:white;
-}
-
-#search h2{
-    margin-bottom:25px;
-    color:#5c4b3b;
-}
-
-.search-box{
     display:flex;
     justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
 }
 
-.search-box input{
-    width:400px;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:5px;
+.search-wrapper{
+    width:600px;
+    max-width:90%;
+    display:flex;
+    border-radius:50px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
 }
 
-.search-box button{
-    padding:12px 25px;
+.search-wrapper input{
+    flex:1;
+    padding:16px 25px;
+    border:none;
+    outline:none;
+    font-size:15px;
+}
+
+.search-wrapper button{
+    padding:0 35px;
+    border:none;
     background:#5c4b3b;
     color:white;
-    border:none;
-    border-radius:5px;
+    font-weight:600;
+    cursor:pointer;
 }
 
-/* ================= CARD PUTIH ================= */
+.search-wrapper button:hover{
+    background:#3e3227;
+}
+
+/* CARD PUTIH */
 #layanan{
-    padding:80px 20px;
+    padding:90px 20px;
 }
 
 .layanan-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+    gap:30px;
     max-width:1100px;
     margin:auto;
 }
 
 .card{
     background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
     text-align:center;
 }
 
@@ -107,68 +118,51 @@ nav h1{
     color:#5c4b3b;
 }
 
-/* ================= CARD HIJAU ================= */
+/* CARD COKLAT */
 #fitur-utama{
-    padding:80px 20px;
+    padding:90px 20px;
 }
 
 .fitur-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+    gap:30px;
     max-width:1100px;
     margin:auto;
 }
 
 .fitur-card{
-    background:#2e7d32;
+    background:#5c4b3b;
     color:white;
-    padding:30px;
-    border-radius:15px;
+    padding:35px;
+    border-radius:18px;
 }
 
-.fitur-card h3{
-    margin:15px 0;
-}
-
-/* ================= JAM LAYANAN ================= */
+/* JAM LAYANAN */
 #jam-layanan{
-    padding:80px 20px;
+    padding:90px 20px;
 }
 
 .jam-container{
     max-width:1100px;
     margin:auto;
-    background:#5c4b3b;
+    background:#3e3227;
     border-radius:20px;
-    padding:50px;
+    padding:55px;
     color:white;
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
 }
 
-.jam-kiri h2{
-    margin-bottom:20px;
-}
-
-.btn-jam{
-    padding:10px 25px;
-    background:#d7ccc8;
-    color:#5c4b3b;
-    text-decoration:none;
-    border-radius:30px;
-    font-weight:bold;
-}
-
 .jam-kanan{
-    width:400px;
+    width:420px;
 }
 
 .jam-item{
     display:flex;
     align-items:center;
-    margin:12px 0;
+    margin:15px 0;
 }
 
 .garis{
@@ -178,9 +172,9 @@ nav h1{
     margin:0 10px;
 }
 
-/* ================= TENTANG ================= */
+/* TENTANG */
 #tentang{
-    padding:80px 20px;
+    padding:90px 20px;
     text-align:center;
 }
 
@@ -189,37 +183,35 @@ nav h1{
     color:#5c4b3b;
 }
 
-/* ================= VIDEO ================= */
+/* VIDEO */
 #video{
-    padding:80px 20px;
+    padding:90px 20px;
     text-align:center;
 }
 
 iframe{
     width:80%;
-    height:400px;
-    border-radius:15px;
+    height:420px;
+    border-radius:18px;
 }
-
 </style>
 </head>
 <body>
 
 <nav>
-    <h1>Perpustakaan Digital</h1>
+    <h1>Sanadi Library</h1>
 </nav>
 
 <section class="hero">
     <div class="hero-text">
-        <h2>Selamat Datang di Website Perpustakaan</h2>
-        <p>Menyediakan akses koleksi dan layanan perpustakaan secara digital.</p>
+        <h2>Welcome to Sanadi Library</h2>
+        <p>Discover knowledge, explore collections, and expand your horizons.</p>
     </div>
 </section>
 
 <section id="search">
-    <h2>Pencarian Koleksi</h2>
-    <div class="search-box">
-        <input type="text" placeholder="Masukkan judul buku...">
+    <div class="search-wrapper">
+        <input type="text" placeholder="Cari buku, jurnal, atau kata kunci...">
         <button>Cari</button>
     </div>
 </section>
@@ -227,20 +219,20 @@ iframe{
 <section id="layanan">
     <div class="layanan-container">
         <div class="card">
-            <h3>Jurnal Elektronik</h3>
-            <p>Akses jurnal dan artikel ilmiah online.</p>
+            <h3>Electronic Journals</h3>
+            <p>Access academic journals and research articles online.</p>
         </div>
         <div class="card">
-            <h3>Buku Elektronik</h3>
-            <p>Baca koleksi e-book secara digital.</p>
+            <h3>E-Books</h3>
+            <p>Read and explore digital book collections easily.</p>
         </div>
         <div class="card">
-            <h3>Layanan Offline</h3>
-            <p>Kunjungan langsung dan koleksi fisik.</p>
+            <h3>Onsite Services</h3>
+            <p>Enjoy physical collections and reading facilities.</p>
         </div>
         <div class="card">
-            <h3>Perpustakaan Cabang</h3>
-            <p>Akses layanan di berbagai lokasi.</p>
+            <h3>Library Branches</h3>
+            <p>Access services across different locations.</p>
         </div>
     </div>
 </section>
@@ -248,58 +240,57 @@ iframe{
 <section id="fitur-utama">
     <div class="fitur-container">
         <div class="fitur-card">
-            <h3>Katalog Online</h3>
-            <p>Pencarian koleksi buku secara digital.</p>
+            <h3>Online Catalog</h3>
+            <p>Search and discover books digitally.</p>
         </div>
         <div class="fitur-card">
-            <h3>Repositori</h3>
-            <p>Kumpulan karya ilmiah dan penelitian.</p>
+            <h3>Repository</h3>
+            <p>Collection of research papers and academic works.</p>
         </div>
         <div class="fitur-card">
-            <h3>Arsip Digital</h3>
-            <p>Dokumen dan arsip penting online.</p>
+            <h3>Digital Archives</h3>
+            <p>Important documents accessible anytime.</p>
         </div>
         <div class="fitur-card">
-            <h3>Cek Peminjaman</h3>
-            <p>Lihat status buku yang dipinjam.</p>
+            <h3>Loan Status</h3>
+            <p>Check your borrowing history and status.</p>
         </div>
     </div>
 </section>
 
 <section id="jam-layanan">
     <div class="jam-container">
-        <div class="jam-kiri">
-            <h2>Jam Layanan</h2>
-            <a href="#" class="btn-jam">Informasi Selengkapnya →</a>
+        <div>
+            <h2>Opening Hours</h2>
         </div>
         <div class="jam-kanan">
             <div class="jam-item">
-                <span>Senin</span>
+                <span>Monday</span>
                 <div class="garis"></div>
-                <span>08.30 - 21.00 WIB</span>
+                <span>08.30 - 21.00</span>
             </div>
             <div class="jam-item">
-                <span>Selasa - Jumat</span>
+                <span>Tuesday - Friday</span>
                 <div class="garis"></div>
-                <span>08.00 - 21.00 WIB</span>
+                <span>08.00 - 21.00</span>
             </div>
             <div class="jam-item">
-                <span>Sabtu - Minggu</span>
+                <span>Saturday - Sunday</span>
                 <div class="garis"></div>
-                <span>Tutup</span>
+                <span>Closed</span>
             </div>
         </div>
     </div>
 </section>
 
 <section id="tentang">
-    <h2>Tentang Perpustakaan</h2>
-    <p>Perpustakaan menyediakan berbagai layanan informasi dan koleksi untuk mendukung pembelajaran.</p>
+    <h2>About Sanadi Library</h2>
+    <p>Sanadi Library provides access to information resources and services to support learning and research activities.</p>
 </section>
 
 <section id="video">
-    <h2>Video Perpustakaan</h2>
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    <h2>Library Video</h2>
+    <iframe src="MASUKKAN_LINK_VIDEO_KAMU_DI_SINI" allowfullscreen></iframe>
 </section>
 
 </body>
