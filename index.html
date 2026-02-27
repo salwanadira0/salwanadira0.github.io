@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perpustakaan Digital | SANADI Library</title>
+<title>SANADI Library | Perpustakaan Perguruan Tinggi</title>
 
 <style>
 *{
@@ -60,7 +60,6 @@ nav a:hover{
     color:#a1887f;
 }
 
-/* BURGER */
 .burger{
     display:none;
     font-size:24px;
@@ -70,68 +69,79 @@ nav a:hover{
 /* HERO */
 .hero{
     position:relative;
-    height:100vh;
-    overflow:hidden;
+    height:90vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-}
-
-.slide{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background-size:cover;
-    background-position:center;
-    opacity:0;
-    transition:opacity 2s;
-}
-
-.slide.active{
-    opacity:1;
+    background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') center/cover no-repeat;
 }
 
 .hero-text{
-    position:relative;
     background:rgba(255,255,255,0.9);
     padding:60px;
     border-radius:10px;
     max-width:650px;
-    z-index:2;
 }
 
 /* SEARCH */
-.search-box{
-    margin-top:25px;
+#search{
+    background:#ffffff;
+    padding:80px 20px;
+    text-align:center;
 }
 
-.search-box input{
-    padding:12px;
-    width:60%;
-    max-width:400px;
+#search h2{
+    margin-bottom:30px;
+    color:#5c4b3b;
+}
+
+.search-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.search-container input{
+    width:400px;
+    max-width:90%;
+    padding:14px;
     border:1px solid #d7ccc8;
     border-radius:6px;
 }
 
-.search-box button{
-    padding:12px 18px;
-    background:#e8dcd1;
+.search-container button{
+    padding:14px 25px;
+    background:#5c4b3b;
+    color:white;
     border:none;
     border-radius:6px;
     cursor:pointer;
 }
 
-/* ABOUT PERGURUAN TINGGI */
+/* HASIL */
+#results{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    background:#f6efe6;
+    padding:20px;
+    width:250px;
+    border-radius:8px;
+    text-align:left;
+}
+
+/* ABOUT */
 #about{
     padding:100px 20px;
     text-align:center;
-    background:#fff;
-}
-
-#about h2{
-    margin-bottom:20px;
-    color:#5c4b3b;
+    background:#fdfaf6;
 }
 
 #about p{
@@ -143,8 +153,8 @@ nav a:hover{
 /* VIDEO */
 #video{
     padding:80px 20px;
-    background:#fdfaf6;
     text-align:center;
+    background:#fff;
 }
 
 #video iframe{
@@ -171,15 +181,6 @@ footer{
 .footer-section{
     max-width:250px;
     margin:15px;
-}
-
-.footer-section h3{
-    margin-bottom:15px;
-}
-
-.footer-section p{
-    font-size:14px;
-    margin-bottom:8px;
 }
 
 .footer-bottom{
@@ -218,10 +219,6 @@ footer{
     .burger{
         display:block;
     }
-
-    .search-box input{
-        width:80%;
-    }
 }
 </style>
 </head>
@@ -247,30 +244,31 @@ footer{
 </header>
 
 <section class="hero">
-    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');"></div>
-    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba');"></div>
-
     <div class="hero-text">
         <h2>Perpustakaan Perguruan Tinggi Digital</h2>
         <p>
-            Mendukung kegiatan akademik melalui akses literatur ilmiah,
-            referensi terpercaya, dan sumber belajar berbasis teknologi.
+            Mendukung kegiatan akademik melalui literatur ilmiah 
+            dan referensi terpercaya bagi mahasiswa dan dosen.
         </p>
-
-        <div class="search-box">
-            <input type="text" placeholder="Cari judul buku, penulis, atau kata kunci...">
-            <button>🔍 Cari</button>
-        </div>
     </div>
+</section>
+
+<section id="search">
+    <h2>Pencarian Koleksi</h2>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Masukkan judul buku...">
+        <button onclick="searchBook()">Cari</button>
+    </div>
+
+    <div id="results"></div>
 </section>
 
 <section id="about">
     <h2>Tentang Perpustakaan Perguruan Tinggi</h2>
     <p>
         SANADI Library merupakan perpustakaan perguruan tinggi berbasis digital 
-        yang berfungsi sebagai pusat sumber informasi akademik. Perpustakaan ini 
-        mendukung proses pendidikan, penelitian, dan pengabdian kepada masyarakat 
-        dengan menyediakan koleksi ilmiah yang terstruktur, relevan, dan mudah diakses.
+        yang berfungsi sebagai pusat sumber informasi akademik untuk mendukung 
+        pendidikan, penelitian, dan pengembangan ilmu pengetahuan.
     </p>
 </section>
 
@@ -300,7 +298,7 @@ footer{
     </div>
 
     <div class="footer-bottom">
-        © 2026 SANADI Library | Perpustakaan Perguruan Tinggi Digital
+        © 2026 SANADI Library
     </div>
 </footer>
 
@@ -309,14 +307,36 @@ function toggleMenu(){
     document.getElementById("navMenu").classList.toggle("active");
 }
 
-const slides = document.querySelectorAll('.slide');
-let index = 0;
+const books = [
+    {title:"Manajemen Perpustakaan Modern", author:"Dr. Andi"},
+    {title:"Pengantar Ilmu Informasi", author:"Siti Rahma"},
+    {title:"Metodologi Penelitian", author:"Prof. Budi"},
+    {title:"Literasi Digital Perguruan Tinggi", author:"Rina Lestari"}
+];
 
-setInterval(()=>{
-    slides[index].classList.remove('active');
-    index = (index+1)%slides.length;
-    slides[index].classList.add('active');
-},6000);
+function searchBook(){
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    const resultDiv = document.getElementById("results");
+    resultDiv.innerHTML = "";
+
+    const filtered = books.filter(book =>
+        book.title.toLowerCase().includes(keyword)
+    );
+
+    if(filtered.length === 0){
+        resultDiv.innerHTML = "<p>Tidak ditemukan.</p>";
+        return;
+    }
+
+    filtered.forEach(book=>{
+        resultDiv.innerHTML += `
+            <div class="card">
+                <h4>${book.title}</h4>
+                <p>Penulis: ${book.author}</p>
+            </div>
+        `;
+    });
+}
 </script>
 
 </body>
